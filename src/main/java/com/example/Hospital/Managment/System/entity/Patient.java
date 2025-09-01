@@ -2,17 +2,21 @@ package com.example.Hospital.Managment.System.entity;
 
 import com.example.Hospital.Managment.System.entity.type.BloodGroupType;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Data
+//@Data
 @ToString
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(
 //        name="patient_tbl",  //set table name by ur own
         uniqueConstraints = {
@@ -40,11 +44,22 @@ public class Patient {
     @Enumerated(EnumType.STRING)
     private BloodGroupType bloodGroup;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL},orphanRemoval = true)
     @JoinColumn(name = "patient_insurance_id")//this will show change the name of join column
     private Insurance insurance;
 
 
-    @OneToMany(mappedBy = "patient")//inverse side
-    private List<Appointment> appointments;
+    @OneToMany(mappedBy = "patient",cascade = CascadeType.REMOVE,orphanRemoval = true)
+    @ToString.Exclude//inverse side
+    private List<Appointment> appointments=new ArrayList<>();
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+
 }

@@ -23,6 +23,7 @@ public class Department {
     private String name;
 
     @OneToOne
+    @JoinColumn
     private Doctor headDoctor;
 
     @ManyToMany
