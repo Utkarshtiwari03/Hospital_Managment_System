@@ -2,7 +2,6 @@ package com.example.Hospital.Managment.System.service;
 
 import com.example.Hospital.Managment.System.entity.Insurance;
 import com.example.Hospital.Managment.System.entity.Patient;
-import com.example.Hospital.Managment.System.repository.InsuranceRepository;
 import com.example.Hospital.Managment.System.repository.PatientRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -11,9 +10,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class InsuranceService {
-
-    @Autowired
-    private InsuranceRepository insuranceRepository;
 
     @Autowired
     private PatientRepository patientRepository;
