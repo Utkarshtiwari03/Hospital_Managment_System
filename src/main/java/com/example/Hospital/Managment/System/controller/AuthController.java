@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.Hospital.Managment.System.dto.LoginRequestDto;
 import com.example.Hospital.Managment.System.dto.LoginResponseDto;
 import com.example.Hospital.Managment.System.dto.SignUPResponseDto;
+import com.example.Hospital.Managment.System.dto.SignUpRequestDto;
 import com.example.Hospital.Managment.System.security.AuthService;
 
 import lombok.RequiredArgsConstructor;
@@ -29,8 +30,8 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<SignUPResponseDto> postMethodName(@RequestBody LoginRequestDto signUpRequestDto) {
-        return ResponseEntity.ok(authService.signUp(signUpRequestDto));   
+    public ResponseEntity<SignUPResponseDto> postMethodName(@RequestBody SignUpRequestDto signUpRequestDto) {
+        return ResponseEntity.ok(authService.signup(signUpRequestDto));   
         
     }
     

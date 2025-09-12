@@ -20,7 +20,7 @@ public class InsuranceService {
                 .orElseThrow(()->new EntityNotFoundException("Patient not found with id: "+patientId));
 
         patient.setInsurance(insurance);
-        insurance.setPatient(patient);
+        insurance.setPatient(patient);//OPTIONAL -> for maintaining bi-directional consistency
         return patient;
     }
 
